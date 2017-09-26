@@ -12,38 +12,31 @@ namespace Core;
 class Database
 {
     private $_db;
-    private $_dataDb = [];
-    private static $_instance;
 
-    private function __construct()
+    public function __construct()
     {
-        $this->_dataDb = require __DIR__ . './../config/dataDb.php';
-        $this->getConnection();
+        $config = require __DIR__ . './../config/dataDb.php';
+        $this->_db = $this->getConnection($config);
     }
 
-    public function getConnection()
+    public function getDb()
+    {
+        return $this->_db;
+    }
+
+    public function getConnection(array $data)
     {
         try {
-           $this->_db = new \PDO(
+           return new \PDO(
                 'mysql:host=' .
-                $this->_dataDb['host'] . ';dbname=' .
-                $this->_dataDb['db'] . ';charset=utf8',
-                $this->_dataDb['user'],
-                $this->_dataDb['password'],
+                $data['host'] . ';dbname=' .
+                $data['db'] . ';charset=utf8',
+                $data['user'],
+                $data['password'],
                 array(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION)
             );
         } catch ( \Exception $e) {
             die('<p><strong>Error : </strong>' . $e->getMessage() . '</p>');
         }
-
-        return $this->_db;
-    }
-
-    public static function getInstance()
-    {
-        if (is_null(self::$_instance)) {
-            self::$_instance = new Database();
-        }
-        return self::$_instance;
     }
 }
