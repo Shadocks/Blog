@@ -11,19 +11,28 @@ namespace App\Form;
 
 class FormContact
 {
-    public function start(string $action, string $method)
-    {
+    public function start(
+        string $action,
+        string $method
+    ) {
         echo '<form action="'.$action.'" method="'.$method.'">';
     }
 
-    public function inputType(string $type, string $labelText, string $forId)
-    {
-        echo '<label for="' . $forId . '">' . $labelText . '</label><input type="'.$type.'" id="'.$forId.'" />';
+    public function inputType(
+        string $label,
+        string $type,
+        string $name
+    ) {
+        echo '<label>'.$label.'<input type="'.$type.'" name="'.$name.'" /></label>';
     }
 
-    public function textArea(string $labelText, string $forId, int $rows, int $cols)
-    {
-        echo '<label for="' . $forId . '">'. $labelText .'</label><textarea rows="'.$rows.'" cols="'.$cols.'" id="'.$forId.'"></textarea>';
+    public function textArea(
+        string $label,
+        string $name,
+        int $rows,
+        int $cols
+    ) {
+        echo '<label>'.$label.'<textarea name="'.$name.'" rows="'.$rows.'" cols="'.$cols.'"></textarea></label>';
     }
 
     public function submit()
