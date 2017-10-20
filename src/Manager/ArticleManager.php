@@ -65,10 +65,8 @@ class ArticleManager
         return $this->hydrate($data);
     }
 
-    public function add(array $data)
+    public function add(Article $article)
     {
-        $article = $this->hydrate($data);
-
         $req = $this->_db->getDb()->prepare('
             INSERT INTO article (titre, chapo, date_creation, contenu, auteur) 
             VALUE (:title, :intro, NOW(), :content, :author)
@@ -82,10 +80,8 @@ class ArticleManager
         $req->execute();
     }
 
-    public function update(array $data)
+    public function update(Article $article)
     {
-        $article = $this->hydrate($data);
-
         $req = $this->_db->getDb()->prepare('
             UPDATE article 
             SET titre = :title, chapo = :intro, auteur = :author, contenu = :content, date_modification = NOW()  
