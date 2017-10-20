@@ -10,14 +10,29 @@ namespace App\Action;
 
 
 use App\Manager\ArticleManager;
+use Core\Twig;
+use Core\Session;
 
 class ActionArticles
 {
-    public function index()
-    {
-        $articlesManager = new ArticleManager();
-        $articles = $articlesManager->getAll();
+    private $twig;
+    private $session;
+    private $articleManager;
 
-        return $this->twig->render('articles.html.twig', ['articles' => $articles]);
+    public function __construct(
+        Twig $twig,
+        Session $session,
+        ArticleManager $articleManager
+    ) {
+        $this->twig = $twig;
+        $this->session = $session;
+        $this->articleManager = $articleManager;
+    }
+
+    public function __invoke()
+    {
+        $articles = $this->articleManager->getAll();
+        $session = $this->session;
+        echo $this->twig->getTwig()->render('articles.html.twig', ['articles' => $articles, 'session' => $session]);
     }
 }

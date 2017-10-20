@@ -8,21 +8,43 @@
 
 namespace App\Action;
 
-
+use App\Form\FormAdd;
+use App\Model\Article;
 use App\Manager\ArticleManager;
 use Core\FormFactory;
-use App\Form\FormAdd;
+use Core\Session;
+use Core\Twig;
 
 class ActionAddArticle
 {
-    public function index()
+    private $twig;
+    private $session;
+    private $formFactory;
+    private $articleManager;
+
+    public function __construct(
+        Twig $twig,
+        Session $session,
+        FormFactory $formFactory,
+        ArticleManager $articleManager
+    ) {
+        $this->twig = $twig;
+        $this->session = $session;
+        $this->formFactory = $formFactory;
+        $this->articleManager = $articleManager;
+    }
+
+    public function __invoke()
     {
-        $formBuilder = new FormFactory();
-        $form = $formBuilder->buildForm(FormAdd::class);
+        $form = $this->formFactory->buildForm(FormAdd::class);
+        echo $this->twig->getTwig()->render('articleAdd.html.twig', ['form' => $form]);
 
-        $articleManager = new ArticleManager();
-        $articleManager->add($_POST);
+        $this->formFactory->data(['class' => Article::class]);
+        $this->formFactory->request($_POST);
+        $this->articleManager->add($this->formFactory->getEntity());
 
-        return $this->twig()->render('addArticle.html.twig', ['form' => $form]);
+        $this->session->start();
+        $this->session->addMessage('SuccessfulAdd', 'L\'article a bien été posté');
+        header('Location: /articles');
     }
 }

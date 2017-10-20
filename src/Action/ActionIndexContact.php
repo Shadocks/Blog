@@ -9,13 +9,26 @@
 namespace App\Action;
 
 
-use FormFactory;
+use App\Form\FormContact;
+use Core\FormFactory;
+use Core\Twig;
 
 class ActionIndexContact
 {
-    public function index()
+    private $twig;
+    private $formFactory;
+
+    public function __construct(
+        Twig $twig,
+        FormFactory $formFactory
+    ) {
+        $this->twig = $twig;
+        $this->formFactory = $formFactory;
+    }
+
+    public function __invoke()
     {
-        $formBuilder = new FormFactory();
-        $form = $formBuilder->buildForm(FormContact::class);
+        $form = $this->formFactory->buildForm(FormContact::class);
+        echo $this->twig->getTwig()->render('indexContact.html.twig', ['form' => $form]);
     }
 }
