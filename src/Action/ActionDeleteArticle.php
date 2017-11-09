@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Mickael
- * Date: 17/10/2017
- * Time: 09:59
- */
 
 namespace App\Action;
 
@@ -12,25 +6,31 @@ namespace App\Action;
 use App\Manager\ArticleManager;
 use Core\Session;
 
+/**
+ * Class ActionDeleteArticle
+ * @package App\Action
+ */
 class ActionDeleteArticle
 {
-    private $session;
+    /**
+     * @var ArticleManager
+     */
     private $articleManager;
 
-    public function __construct(
-        Session $session,
-        ArticleManager $articleManager
-    ) {
-        $this->session = $session;
-        $this->articleManager = $articleManager;
+    /**
+     * ActionDeleteArticle constructor.
+     */
+    public function __construct()
+    {
+        $this->articleManager = new ArticleManager();
     }
 
-    public function __invoke()
+    /**
+     * @param $id
+     */
+    public function __invoke($id)
     {
-        $this->articleManager->delete($_GET['id']);
-
-        $this->session->start();
-        $this->session->addMessage('SuccessfulDeletion', 'L\'article a bien été supprimé');
+        $this->articleManager->delete($id);
         header('Location: /articles');
     }
 }

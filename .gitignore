@@ -1,5 +1,9 @@
 ### Composer ###
 vendor/
 
-### JetBrains ###
-.idea/
+### Template ###
+template/articleAdd.html.twig
+template/articleDetail.html.twig
+template/articles.html.twig
+template/articleUpdate.html.twig
+template/IndexContact.html.twig

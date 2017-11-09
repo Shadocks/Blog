@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Mickael
- * Date: 09/10/2017
- * Time: 14:50
- */
 
 namespace App\Action;
 
@@ -12,40 +6,54 @@ namespace App\Action;
 use App\Form\FormUpdate;
 use App\Manager\ArticleManager;
 use Core\FormFactory;
-use Core\Session;
 use Core\Twig;
 
+/**
+ * Class ActionUpdateArticle
+ * @package App\Action
+ */
 class ActionUpdateArticle
 {
+    /**
+     * @var Twig
+     */
     private $twig;
-    private $session;
+
+    /**
+     * @var FormFactory
+     */
     private $formFactory;
+
+    /**
+     * @var ArticleManager
+     */
     private $articleManager;
 
-    public function __construct(
-        Twig $twig,
-        Session $session,
-        FormFactory $formFactory,
-        ArticleManager $articleManager
-    ) {
-        $this->twig = $twig;
-        $this->session = $session;
-        $this->formFactory = $formFactory;
-        $this->articleManager = $articleManager;
+    /**
+     * ActionUpdateArticle constructor.
+     */
+    public function __construct() {
+        $this->twig = new Twig();
+        $this->formFactory = new FormFactory();
+        $this->articleManager = new ArticleManager();
     }
 
-    public function __invoke()
+    /**
+     * @param $id
+     */
+    public function __invoke($id)
     {
         $form = $this->formFactory->buildForm(FormUpdate::class);
-        $article = $this->articleManager->getById($_GET['id']);
+            $article = $this->articleManager->getById($id);
+                $this->formFactory->data($article);
+
         echo $this->twig->getTwig()->render('articleUpdate.html.twig', ['form' => $form, 'article' => $article]);
 
-        $this->formFactory->data($article);
-        $this->formFactory->request($_POST);
-        $this->articleManager->update($this->formFactory->getData());
 
-        $this->session->start();
-        $this->session->addMessage('SuccessfulUpdate', 'L\'article a bien été modifié');
-        header('Location: /article/detail');
+        if ($_POST) {
+            $this->formFactory->request($_POST);
+                $this->articleManager->update($this->formFactory->getData());
+                    header('Location: /article/detail/'.$id);
+        }
     }
 }

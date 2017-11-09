@@ -1,39 +1,41 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Mickael
- * Date: 09/10/2017
- * Time: 14:54
- */
 
 namespace App\Action;
 
 
 use App\Manager\ArticleManager;
-use Core\Session;
 use Core\Twig;
 
+/**
+ * Class ActionDetailArticle
+ * @package App\Action
+ */
 class ActionDetailArticle
 {
+    /**
+     * @var Twig
+     */
     private $twig;
-    private $session;
+
+    /**
+     * @var ArticleManager
+     */
     private $articleManager;
 
-    public function __construct(
-        Twig $twig,
-        Session $session,
-        ArticleManager $articleManager
-    ) {
-        $this->twig = $twig;
-        $this->session = $session;
-        $this->articleManager = $articleManager;
+    /**
+     * ActionDetailArticle constructor.
+     */
+    public function __construct() {
+        $this->twig = new Twig();
+        $this->articleManager = new ArticleManager();
     }
 
-    public function __invoke()
+    /**
+     * @param $id
+     */
+    public function __invoke($id)
     {
-        $article = $this->articleManager->getById($_GET['id']);
-        $session = $this->session;
-        echo $this->twig->getTwig()->render('articleDetail.html.twig', ['article' => $article, 'session' => $session]);
+        $article = $this->articleManager->getById($id);
+        echo $this->twig->getTwig()->render('articleDetail.html.twig', ['article' => $article]);
     }
-
 }

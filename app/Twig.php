@@ -1,16 +1,17 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Mickael
- * Date: 14/10/2017
- * Time: 15:13
- */
 
 namespace Core;
 
 
+/**
+ * Class Twig
+ * @package Core
+ */
 class Twig
 {
+    /**
+     * @return \Twig_Environment
+     */
     public function getTwig()
     {
         $loader = new \Twig_Loader_Filesystem('./../template');

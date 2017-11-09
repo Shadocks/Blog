@@ -1,25 +1,34 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Mickael
- * Date: 25/09/2017
- * Time: 11:03
- */
 
 namespace App\Manager;
+
 
 use Core\Database;
 use App\Model\Article;
 
+/**
+ * Class ArticleManager
+ * @package App\Manager
+ */
 class ArticleManager
 {
+    /**
+     * @var Database
+     */
     private $_db;
 
+    /**
+     * ArticleManager constructor.
+     */
     public function __construct()
     {
         $this->_db = new Database();
     }
 
+    /**
+     * @param array $data
+     * @return Article
+     */
     public function hydrate(array $data)
     {
         $article = new Article();
@@ -34,6 +43,9 @@ class ArticleManager
         return $article;
     }
 
+    /**
+     * @return array
+     */
     public function getAll()
     {
         $articles = [];
@@ -52,6 +64,10 @@ class ArticleManager
         return $articles;
     }
 
+    /**
+     * @param $id
+     * @return Article
+     */
     public function getById($id)
     {
         $req = $this->_db->getDb()->prepare('SELECT * FROM article WHERE id = :id');
@@ -65,6 +81,9 @@ class ArticleManager
         return $this->hydrate($data);
     }
 
+    /**
+     * @param Article $article
+     */
     public function add(Article $article)
     {
         $req = $this->_db->getDb()->prepare('
@@ -80,6 +99,9 @@ class ArticleManager
         $req->execute();
     }
 
+    /**
+     * @param Article $article
+     */
     public function update(Article $article)
     {
         $req = $this->_db->getDb()->prepare('
@@ -97,6 +119,9 @@ class ArticleManager
         $req->execute();
     }
 
+    /**
+     * @param $id
+     */
     public function delete($id)
     {
         $req = $this->_db->getDb()->prepare('DELETE FROM article WHERE id = :id');
