@@ -1,22 +1,47 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Mickael
- * Date: 21/09/2017
- * Time: 14:19
- */
 
 namespace App\Model;
 
 
+/**
+ * Class Article
+ * @package App\Model
+ */
 class Article
 {
+    /**
+     * @var
+     */
     protected $id;
+
+    /**
+     * @var
+     */
     private $_title;
+
+    /**
+     * @var
+     */
     private $_intro;
+
+    /**
+     * @var
+     */
     private $_author;
+
+    /**
+     * @var
+     */
     private $_content;
+
+    /**
+     * @var
+     */
     private $_dating;
+
+    /**
+     * @var
+     */
     private $_dateUpdate;
 
     public function __construct()
@@ -24,9 +49,9 @@ class Article
     }
 
     /**
-     * @param integer $id
+     * @param int $id
      */
-    public function setId($id)
+    public function setId(int $id)
     {
         $this->id = (int) $id;
     }
@@ -96,7 +121,7 @@ class Article
     }
 
     /**
-     * @return integer
+     * @return mixed
      */
     public function getId()
     {

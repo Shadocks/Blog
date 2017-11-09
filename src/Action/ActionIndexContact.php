@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Mickael
- * Date: 09/10/2017
- * Time: 14:48
- */
 
 namespace App\Action;
 
@@ -13,19 +7,33 @@ use App\Form\FormContact;
 use Core\FormFactory;
 use Core\Twig;
 
+/**
+ * Class ActionIndexContact
+ * @package App\Action
+ */
 class ActionIndexContact
 {
+    /**
+     * @var Twig
+     */
     private $twig;
+
+    /**
+     * @var FormFactory
+     */
     private $formFactory;
 
-    public function __construct(
-        Twig $twig,
-        FormFactory $formFactory
-    ) {
-        $this->twig = $twig;
-        $this->formFactory = $formFactory;
+    /**
+     * ActionIndexContact constructor.
+     */
+    public function __construct() {
+        $this->twig = new Twig();
+        $this->formFactory = new FormFactory();
     }
 
+    /**
+     *
+     */
     public function __invoke()
     {
         $form = $this->formFactory->buildForm(FormContact::class);

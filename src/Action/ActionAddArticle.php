@@ -1,50 +1,59 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Mickael
- * Date: 09/10/2017
- * Time: 14:50
- */
 
 namespace App\Action;
+
 
 use App\Form\FormAdd;
 use App\Model\Article;
 use App\Manager\ArticleManager;
 use Core\FormFactory;
-use Core\Session;
 use Core\Twig;
 
+/**
+ * Class ActionAddArticle
+ * @package App\Action
+ */
 class ActionAddArticle
 {
+    /**
+     * @var Twig
+     */
     private $twig;
-    private $session;
+
+    /**
+     * @var FormFactory
+     */
     private $formFactory;
+
+    /**
+     * @var ArticleManager
+     */
     private $articleManager;
 
-    public function __construct(
-        Twig $twig,
-        Session $session,
-        FormFactory $formFactory,
-        ArticleManager $articleManager
-    ) {
-        $this->twig = $twig;
-        $this->session = $session;
-        $this->formFactory = $formFactory;
-        $this->articleManager = $articleManager;
+    /**
+     * ActionAddArticle constructor.
+     */
+    public function __construct()
+    {
+        $this->twig = new Twig();
+        $this->formFactory = new FormFactory();
+        $this->articleManager = new ArticleManager();
     }
 
+    /**
+     *
+     */
     public function __invoke()
     {
         $form = $this->formFactory->buildForm(FormAdd::class);
         echo $this->twig->getTwig()->render('articleAdd.html.twig', ['form' => $form]);
 
         $this->formFactory->data(['class' => Article::class]);
-        $this->formFactory->request($_POST);
-        $this->articleManager->add($this->formFactory->getEntity());
 
-        $this->session->start();
-        $this->session->addMessage('SuccessfulAdd', 'L\'article a bien été posté');
-        header('Location: /articles');
+        if ($_POST) {
+            $this->formFactory->request($_POST);
+                $this->articleManager->add($this->formFactory->getEntity());
+                    header('Location: /articles');
+        }
     }
 }
