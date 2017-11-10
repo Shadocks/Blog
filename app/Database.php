@@ -47,7 +47,7 @@ class Database
                 array(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION)
             );
         } catch ( \Exception $e) {
-            die('<p><strong>Error : </strong>' . $e->getMessage() . '</p>');
+            $e->getMessage();
         }
     }
 }
