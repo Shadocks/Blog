@@ -1,6 +1,7 @@
 {
     "name": "shadocks/blog",
     "description": "Source code of a blog for a project as part of an OpenClassrooms training",
+    "license": "MIT",
     "authors": [
         {
             "name": "Shadocks",
