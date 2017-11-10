@@ -1,11 +1,19 @@
 {
-  "autoload":{
-    "psr-4":{
-      "App\\": "src/",
-      "Core\\": "app/"
+    "name": "shadocks/blog",
+    "description": "Source code of a blog for a project as part of an OpenClassrooms training",
+    "authors": [
+        {
+            "name": "Shadocks",
+            "email": "mickael.bardeau@laposte.net"
+        }
+    ],
+    "autoload":{
+        "psr-4": {
+            "App\\": "src/",
+            "Core\\": "app/"
+        }
+    },
+    "require": {
+        "twig/twig": "^2.0"
     }
-  },
-  "require":{
-    "twig/twig": "^1.34"
-  }
 }
