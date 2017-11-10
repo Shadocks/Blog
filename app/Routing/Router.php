@@ -39,10 +39,10 @@ class Router
     }
 
     /**
-     * @param $route
+     * @param Route $route
      * @param $uri
      */
-    public function catchParam($route, $uri)
+    public function catchParam(Route $route, $uri)
     {
         $route->match($uri);
     }
