@@ -24,13 +24,18 @@ class Mailer
     private $message;
 
     /**
+     * @var
+     */
+    private $data;
+
+    /**
      * Mailer constructor.
      */
     public function __construct()
     {
-        $data = require __DIR__ . './../config/mailer.php';
+        $this->data = require __DIR__ . './../config/mailer.php';
 
-        $this->transport = $this->buildTransport($data);
+        $this->transport = $this->buildTransport($this->data);
         $this->mailer = new \Swift_Mailer($this->transport);
     }
 
@@ -40,7 +45,7 @@ class Mailer
      */
     public function buildTransport(array $data)
     {
-        return (new \Swift_SmtpTransport('smtp.sendgrid.net', 465, 'ssl'))
+        return (new \Swift_SmtpTransport($data['host'], $data['port'], $data['security']))
         ->setUsername($data['username'])->setPassword($data['password']);
     }
 
@@ -72,10 +77,5 @@ class Mailer
     {
         $result = $this->mailer->send($this->getMessage());
 
-        if ($result) {
-            echo 'Votre message a bien été envoyé. Merci de m\'avoir contacté';
-        } else {
-            echo 'Désolé, votre message n\'a pas pu être envoyé';
-        }
     }
 }
