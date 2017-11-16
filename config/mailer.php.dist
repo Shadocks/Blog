@@ -1,0 +1,9 @@
+<?php
+
+return [
+    'host' => 'smtp.xxx.xxx',
+    'port' => 000,
+    'security' => 'xxx',
+    'username' => 'xxx',
+    'password' => 'xxx'
+];
