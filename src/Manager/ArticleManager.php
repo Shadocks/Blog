@@ -51,7 +51,7 @@ class ArticleManager
         $articles = [];
 
         $req = $this->_db->getDb()->query('
-            SELECT id, titre, chapo, auteur, contenu, date_creation, date_modification
+            SELECT id, titre, chapo, auteur, contenu, date_creation, DATE_FORMAT(date_modification, \'%d %M %Y\') AS date_modification
             FROM article
             ORDER BY id
             DESC
@@ -70,7 +70,7 @@ class ArticleManager
      */
     public function getById($id)
     {
-        $req = $this->_db->getDb()->prepare('SELECT * FROM article WHERE id = :id');
+        $req = $this->_db->getDb()->prepare('SELECT id, titre, chapo, auteur, contenu, DATE_FORMAT(date_creation, \'%d %M %Y\') AS date_creation, DATE_FORMAT(date_modification, \'%d %M %Y\') AS date_modification FROM article WHERE id = :id');
 
         $req->bindValue(':id', $id, \PDO::PARAM_INT);
 

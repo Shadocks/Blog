@@ -21,43 +21,51 @@ class FormUpdate
     }
 
     /**
+     * @param string $text
+     */
+    public function legend(string $text)
+    {
+        echo '<legend>'.$text.'</legend>';
+    }
+
+    /**
      * @param string $label
      * @param string $type
      * @param string $name
+     * @param string $class
      * @param string $value
      */
     public function inputType(
         string $label,
         string $type,
         string $name,
+        string $class,
         string $value = ''
     ) {
-        echo '<label>'.$label.'<input type="'.$type.'" name="'.$name.'" value="'.$value.'" /></label>';
+        echo '<label>'.$label.'<input type="'.$type.'" name="'.$name.'" class="'.$class.'" value="'.$value.'" /></label>';
     }
 
     /**
      * @param string $label
      * @param string $name
-     * @param int $rows
-     * @param int $cols
+     * @param string $class
      * @param string $value
      */
     public function textArea(
         string $label,
         string $name,
-        int $rows,
-        int $cols,
+        string $class,
         string $value = ''
     ) {
-        echo '<label>'.$label.'<textarea name="'.$name.'" rows="'.$rows.'" cols="'.$cols.'">'.$value.'</textarea></label>';
+        echo '<label>'.$label.'<textarea name="'.$name.'" class="'.$class.'" >'.$value.'</textarea></label>';
     }
 
     /**
-     *
+     * @param string $class
      */
-    public function submit()
+    public function submit(string $class)
     {
-        echo '<button type="submit">Modifier</button>';
+        echo '<button type="submit" name="submit" class="'.$class.'">Modifier</button>';
     }
 
     /**

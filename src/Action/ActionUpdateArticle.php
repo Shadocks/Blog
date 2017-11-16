@@ -47,13 +47,12 @@ class ActionUpdateArticle
             $article = $this->articleManager->getById($id);
                 $this->formFactory->data($article);
 
-        echo $this->twig->getTwig()->render('articleUpdate.html.twig', ['form' => $form, 'article' => $article]);
-
-
         if ($_POST) {
             $this->formFactory->request($_POST);
                 $this->articleManager->update($this->formFactory->getData());
                     header('Location: /article/detail/'.$id);
         }
+
+        echo $this->twig->getTwig()->render('articleUpdate.html.twig', ['form' => $form, 'article' => $article]);
     }
 }
