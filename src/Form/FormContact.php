@@ -21,39 +21,47 @@ class FormContact
     }
 
     /**
+     * @param string $text
+     */
+    public function legend(string $text)
+    {
+        echo '<legend>'.$text.'</legend>';
+    }
+
+    /**
      * @param string $label
      * @param string $type
      * @param string $name
+     * @param string $class
      */
     public function inputType(
         string $label,
         string $type,
-        string $name
+        string $name,
+        string $class
     ) {
-        echo '<label>'.$label.'<input type="'.$type.'" name="'.$name.'" /></label>';
+        echo '<label>'.$label.'<input type="'.$type.'" name="'.$name.'" class="'.$class.'" required /></label>';
     }
 
     /**
      * @param string $label
      * @param string $name
-     * @param int $rows
-     * @param int $cols
+     * @param string $class
      */
     public function textArea(
         string $label,
         string $name,
-        int $rows,
-        int $cols
+        string $class
     ) {
-        echo '<label>'.$label.'<textarea name="'.$name.'" rows="'.$rows.'" cols="'.$cols.'"></textarea></label>';
+        echo '<label>'.$label.'<textarea name="'.$name.'" class="'.$class.'"></textarea></label>';
     }
 
     /**
-     *
+     * @param string $class
      */
-    public function submit()
+    public function submit(string $class)
     {
-        echo '<button type="submit">Envoyer</button>';
+        echo '<button type="submit" class="'.$class.'" >Envoyer</button>';
     }
 
     /**

@@ -46,8 +46,6 @@ class ActionAddArticle
     public function __invoke()
     {
         $form = $this->formFactory->buildForm(FormAdd::class);
-        echo $this->twig->getTwig()->render('articleAdd.html.twig', ['form' => $form]);
-
         $this->formFactory->data(['class' => Article::class]);
 
         if ($_POST) {
@@ -55,5 +53,7 @@ class ActionAddArticle
                 $this->articleManager->add($this->formFactory->getEntity());
                     header('Location: /articles');
         }
+
+        echo $this->twig->getTwig()->render('articleAdd.html.twig', ['form' => $form]);
     }
 }

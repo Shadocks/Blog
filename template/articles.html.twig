@@ -1,0 +1,33 @@
+{% extends 'layout.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <h3>Articles postés</h3>
+        <hr />
+        {% for article in articles %}
+            <div class="row">
+                <div class="col-xs-12">
+                    <h4>{{ article.title }}</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    {% if article.dateUpdate %}
+                        <p>Modifié le <strong>{{ article.dateUpdate }}</strong></p>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <p>{{ article.intro }}</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <a href="/article/detail/{{ article.id }}" class="btn btn-primary">Détail de l'article</a>
+                </div>
+            </div>
+            <hr />
+        {% endfor %}
+    </div>
+{% endblock %}

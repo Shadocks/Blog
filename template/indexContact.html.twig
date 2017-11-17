@@ -1,0 +1,41 @@
+{% extends 'layout.html.twig' %}
+
+{% block form %}
+    <div class="container">
+        {{ form.legend('Me contacter') }}
+            {{ form.start('', 'post') }}
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-md-3">
+                        <div class="form-group">
+                            {{ form.inputType('Nom * ', 'text', 'name', 'form-control') }}
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-3">
+                        <div class="form-group">
+                            {{ form.inputType('Prénom * ', 'text', 'surname', 'form-control') }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-md-3">
+                        <div class="form-group">
+                            {{ form.inputType('E-mail * ', 'mail', 'mail', 'form-control') }}
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            {{ form.textArea('Message', 'message', 'form-control') }}
+                        </div>
+                    </div>
+                </div>
+                {{ form.submit('btn btn-primary') }}
+            {{ form.end }}
+        <hr />
+    </div>
+{% endblock %}
+
+{% block cv %}
+    <div class="container">
+        <a href="pdf/cvmickaelbardeau.pdf">Télécharger mon CV au format PDF</a>
+    </div>
+{% endblock %}
