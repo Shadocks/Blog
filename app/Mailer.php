@@ -33,7 +33,7 @@ class Mailer
      */
     public function __construct()
     {
-        $this->data = require __DIR__ . './../config/mailer.php';
+        $this->data = require __DIR__ . './../config/mailer.php.dist';
 
         $this->transport = $this->buildTransport($this->data);
         $this->mailer = new \Swift_Mailer($this->transport);

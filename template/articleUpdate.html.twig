@@ -1,0 +1,33 @@
+{% extends 'layout.html.twig' %}
+
+{% block form %}
+    <div class="container">
+        {{ form.legend('Modification article') }}
+            {{ form.start('', 'post') }}
+                <div class="row">
+                    <div class="col-xs-6">
+                        <div class="form-group">
+                            {{ form.inputType('Titre ', 'text', 'title', 'form-control', article.title) }}
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            {{ form.inputType('Chapô ', 'text', 'intro', 'form-control', article.intro) }}
+                        </div>
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="form-group">
+                            {{ form.inputType('Auteur ', 'text', 'author', 'form-control', article.author) }}
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            {{ form.textArea('Article ', 'content', 'form-control', article.content) }}
+                        </div>
+                    </div>
+                </div>
+                {{ form.submit('btn btn-primary') }}
+            {{ form.end }}
+        <hr />
+    </div>
+{% endblock %}

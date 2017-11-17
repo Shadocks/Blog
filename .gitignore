@@ -1,12 +1,2 @@
 ### Composer ###
 vendor/
-
-### Template ###
-template/articleAdd.html.twig
-template/articleDetail.html.twig
-template/articles.html.twig
-template/articleUpdate.html.twig
-template/IndexContact.html.twig
-
-### config ###
-config/mailer.php
