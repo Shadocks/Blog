@@ -75,7 +75,6 @@ class Mailer
      */
     public function execute()
     {
-        $result = $this->mailer->send($this->getMessage());
-
+        $this->mailer->send($this->getMessage());
     }
 }
