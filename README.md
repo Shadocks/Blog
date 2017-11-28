@@ -48,9 +48,3 @@ return [
     'password' => 'xxx'
 ];
 ```
-
-   - After the configuration done, rename `mailer.php.dist` to `mailer.php`. In `Mailer.php` (path: root/app/Mailer.php) update path of the __construct () method.
-    
-```php 
-$this->data = require __DIR__ . './../config/mailer.php';
-```
