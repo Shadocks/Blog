@@ -1,0 +1,13 @@
+body {
+    margin-top: 100px
+}
+
+.info {
+    text-align: justify;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    padding-top: 60px;
+}
