@@ -14,11 +14,27 @@ Local operating configuration:
 
 - Composer [download](https://getcomposer.org/download/)
 
-- Use the PHP server for start the blog
-  - In the console, move to the public folder `cd public` (ex: `cd wamp64\www\MBBlog\public`)
-  - Enter the following command: `php -S localhost:9800 index.php`
-  - Access the project via your browser: `http://localhost:9800`
-  
+- Blog start 
+  - Use the **PHP** server
+      - In the console, move to the public folder `cd public` (ex: `cd wamp64\www\MBBlog\public`)
+      - Enter the following command: `php -S localhost:9800 index.php`
+      - Access the project via your browser: `http://localhost:9800`
+   - Or virtualhost **Apache**
+      - Configuration template :
+      
+```apache
+<VirtualHost *:80>
+	ServerName NAME_OF_SERVER
+	DocumentRoot "c:/wamp64/www/PATH_TO_THE_BLOG_FOLDER/blog/public"
+	<Directory  "c:/wamp64/www/PATH_TO_THE_BLOG_FOLDER/blog/public/">
+		Options +Indexes +Includes +FollowSymLinks +MultiViews
+		AllowOverride All
+		Require local
+		FallbackResource /index.php
+	</Directory>
+</VirtualHost>
+```
+
 - Mail
   - You will need an SMTP to send e-mail. The configuration of the mailer.php.dist file is necessary (path: root/config/mailer.php.dist).
 
