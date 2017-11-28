@@ -19,6 +19,7 @@ Local operating configuration:
       - In the console, move to the public folder `cd public` (ex: `cd wamp64\www\MBBlog\public`)
       - Enter the following command: `php -S localhost:9800 index.php`
       - Access the project via your browser: `http://localhost:9800`
+      
    - Or virtualhost **Apache**
       - Configuration template :
       
