@@ -6,25 +6,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-        <link rel="icon" type="image/x-icon" href="./../public/favicon.ico" />
-        <style type="text/css">
-            body {
-                margin-top: 100px
-            }
-            .info {
-                text-align: justify;
-            }
-            img {
-                max-width: 100%;
-                height: auto;
-            }
-        </style>
+        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="stylesheet" href="/css/custom.css" />
         <title>MBBlog</title>
     </head>
     <body>
         <nav class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
-
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                         <span class="sr-only">Toggle navigation</span>
@@ -34,7 +22,6 @@
                     </button>
                     <a class="navbar-brand" href="/">MBBlog</a>
                 </div>
-
                 <div class="collapse navbar-collapse" id="navbar">
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="/">Home</a></li>
@@ -42,18 +29,16 @@
                         <li><a href="/article/add">Ecrire un article</a></li>
                     </ul>
                 </div>
-
             </div>
         </nav>
-
         <div class="container">
             <section class="row">
-                <div class="col-sm-2">
-                    <img src="./../img/image.jpg" alt="moi" />
+                <div class="hidden-xs col-sm-2 col-md-2 col-lg-2">
+                    <img src="/img/image.jpg" alt="moi" />
                 </div>
-                <article class="col-sm-10">
+                <article class="col-sm-10 col-md-10 col-lg-10">
                     <h2><strong>Mickaël BARDEAU</strong></h2>
-                    <p>Développeur PHP/symfony en devenir !</p>
+                    <h3>Développeur PHP/symfony en devenir !</h3>
                     <p class="info">
                         Etudiant à Open Classrooms pour devenir développeur Backend je suis le
                         parcours Développeur d’application PHP/Symfony. La formation est composée
@@ -70,18 +55,14 @@
                         gestionnaire de dépendances Composer. SwiftMailer et couplé avec le service
                         de messagerie SendGrid.
                     </p>
-                    <a href="https://github.com/Shadocks/Blog" target="blank">Code source du projet</a>
+                    <a href="https://github.com/Shadocks/Blog" target="blank" class="label label-info">Code source du projet</a>
+                    <a href="/pdf/cvmickaelbardeau.pdf" class="label label-info">Télécharger mon CV au format PDF</a>
                 </article>
             </section>
             <hr/>
         </div>
-
-    {% block body %}{% endblock %}
-
-    {% block form %}{% endblock %}
-
-    {% block cv %}{% endblock %}
-
+            {% block body %}{% endblock %}
+            {% block form %}{% endblock %}
     <footer class="container">
         <div class="row">
             <div class="form-groupe text-center">
@@ -91,9 +72,7 @@
             </div>
         </div>
     </footer>
-
-    <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
+        <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     </body>
 </html>

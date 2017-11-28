@@ -10,10 +10,7 @@
         {% if article.dateUpdate %}
             <p>Cet article a été modifié le <strong>{{ article.dateUpdate}}</strong></p>
         {% endif %}
-        <div>
-            <a href="/article/update/{{ article.id }}" class="btn btn-primary">Modifier l'article</a>
-            <a href="/article/delete/{{ article.id }}" class="btn btn-primary">Supprimmer l'article</a>
-            <a href="/" class="btn btn-primary">Acceuil</a>
-        </div>
+        <a href="/article/update/{{ article.id }}" class="btn btn-primary">Modifier l'article</a>
+        <a href="/article/delete/{{ article.id }}" class="btn btn-warning">Supprimmer l'article</a>
     </div>
 {% endblock %}
