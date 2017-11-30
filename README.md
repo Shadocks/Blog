@@ -48,3 +48,4 @@ return [
     'password' => 'xxx'
 ];
 ```
+- After the configuration done, rename `mailer.php.dist` to `mailer.php`.
