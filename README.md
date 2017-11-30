@@ -38,6 +38,7 @@ Local operating configuration:
 
 - Mail
   - You will need an SMTP to send e-mail. The configuration of the mailer.php.dist file is necessary (path: root/config/mailer.php.dist).
+  - After the configuration done, rename `mailer.php.dist` to `mailer.php`.
 
 ```php
 return [
@@ -48,4 +49,3 @@ return [
     'password' => 'xxx'
 ];
 ```
-- After the configuration done, rename `mailer.php.dist` to `mailer.php`.
