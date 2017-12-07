@@ -1,4 +1,4 @@
-# MBBlog
+# Blog
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/1b12f574-6a43-4479-86df-4e602609becf/big.png)](https://insight.sensiolabs.com/projects/1b12f574-6a43-4479-86df-4e602609becf)
 ## Description
 The MBBlog application is a study project. It is programmed in PHP OOP. The features/pages requested for this blog project are:
