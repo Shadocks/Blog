@@ -1,5 +1,11 @@
+### PhpStorm ###
+.idea/
+
 ### Composer ###
 vendor/
+
+### Project ###
+.env
 
 ### Config ###
 config/mailer.php

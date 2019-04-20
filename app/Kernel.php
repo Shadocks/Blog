@@ -12,7 +12,7 @@ use Core\Routing\Router;
 class Kernel
 {
     /**
-     * @var
+     * @var Router $router
      */
     private $router;
 
