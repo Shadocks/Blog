@@ -51,6 +51,7 @@ class ActionAddArticle
         $this->formFactory->data(['class' => Article::class]);
 
         if ($_POST) {
+            $this->formFactory->request($_POST);
             $this->articleManager->add($this->formFactory->getEntity());
                 header('Location: /articles');
         }

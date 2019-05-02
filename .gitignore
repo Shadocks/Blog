@@ -9,4 +9,4 @@ vendor/
 
 ### Config ###
 config/mailer.php
-config/dp.php
+config/db.php
